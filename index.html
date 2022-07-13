@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <title>Lembrete</title>
 </head>
+
 <body>
     <header>
-        <button>
+        <button onclick="adicionaLembrete()">
             <i class="fa-solid fa-plus"></i>
             <span>Novo Lembrete</span>
         </button>
@@ -19,26 +23,20 @@
     <main>
         <section>
             <div>
-                <button><i class="fa-solid fa-chevron-left"></i></button>
-                <h2>sadfasdf</h2>
-                <button><i class="fa-solid fa-chevron-right"></i></button>
+                <button onclick="decrementaData()"><i class="fa-solid fa-chevron-left"></i></button>
+                <h2 id="mesSistema"></h2>
+                <button onclick="incrementaData()"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
             <h1></h1>
-            <ul>
-                <li>
-                    <p>Evento</p>
-                    <p>15:30</p>
-                </li>
-                <li>
-                    <p>Evento</p>
-                    <p>15:30</p>
-                </li>
+            <ul id="ulPai">
+
             </ul>
-            
+
         </section>
     </main>
 
 
     <script src="./index.js"></script>
 </body>
+
 </html>
