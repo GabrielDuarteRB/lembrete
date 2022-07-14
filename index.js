@@ -16,30 +16,30 @@ class Lembretes {
 
 const adicionaLembrete = (descricaoRecebida, mesRecebida, anoRecebida) => {
     const descricao = descricaoRecebida ? descricaoRecebida : prompt(`Descrição do lembrete: `)
-    if(!descricao.length){
+    if (!descricao.length) {
         alert("Adicione uma descrição válida")
         return adicionaLembrete()
     }
 
     const mes = mesRecebida ? mesRecebida : prompt(`Mês do lembrete: `)
-    if(isNaN(mes) || mes < 0 || mes > 32){
+    if (isNaN(mes) || mes < 0 || mes >= 13) {
         alert("Adicione um mês válido!")
         return adicionaLembrete(descricao)
     }
 
     const ano = anoRecebida ? anoRecebida : prompt(`Ano do lembrete: `)
-    if(isNaN(ano)){
+    if (isNaN(ano) || ano.length !== 4) {
         alert("Adicione um ano válido!")
         return adicionaLembrete(descricao, mes)
     }
 
-    let tempo = prompt(`hora do lembrete: `)   
-    tempo = tempo.split(':') 
+    let tempo = prompt(`hora do lembrete: (formato 00:00)`)
+    tempo = tempo.split(':')
 
     let ehHoraValida = isNaN(tempo[0]) || tempo[0] < 0 || tempo[0] > 24
-    let ehMinutoValido = (isNaN(tempo[1]) && tempo[1] !== undefined ) || tempo[1] < 0 || tempo[1] > 60
+    let ehMinutoValido = (isNaN(tempo[1]) && tempo[1] !== undefined) || tempo[1] < 0 || tempo[1] > 60
 
-    if(ehHoraValida || ehMinutoValido){
+    if (ehHoraValida || ehMinutoValido) {
         alert("Adicione um hora válida!")
         return adicionaLembrete(descricao, mes, ano)
     }
@@ -62,7 +62,6 @@ const atualizaLista = (data) => {
     ul.textContent = ''
 
     filtrado.forEach(lembrete => {
-        console.log(lembrete)
         const li = document.createElement('li')
         const descricao = document.createElement('p')
         const hora = document.createElement('p')
@@ -74,8 +73,8 @@ const atualizaLista = (data) => {
     })
 }
 
-const corrigirHorario = (horario) =>{
-    if(horario < 10){
+const corrigirHorario = (horario) => {
+    if (horario < 10) {
         return `0${horario}`
     }
     return horario
