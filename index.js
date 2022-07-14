@@ -14,13 +14,40 @@ class Lembretes {
     }
 }
 
-const adicionaLembrete = () => {
-    const descricao = prompt(`Descrição do lembrete: `)
-    const mes = prompt(`Mês do lembrete: `)
-    const ano = prompt(`Ano do lembrete: `)
-    const hora = prompt(`hora do lembrete: `)
+const adicionaLembrete = (descricaoRecebida, mesRecebida, anoRecebida) => {
+    const descricao = descricaoRecebida ? descricaoRecebida : prompt(`Descrição do lembrete: `)
+    if(!descricao.length){
+        alert("Adicione uma descrição válida")
+        return adicionaLembrete()
+    }
 
-    const novaData = new Date(ano, mes, '', hora)
+    const mes = mesRecebida ? mesRecebida : prompt(`Mês do lembrete: `)
+    if(isNaN(mes) || mes < 0 || mes > 32){
+        alert("Adicione um mês válido!")
+        return adicionaLembrete(descricao)
+    }
+
+    const ano = anoRecebida ? anoRecebida : prompt(`Ano do lembrete: `)
+    if(isNaN(ano)){
+        alert("Adicione um ano válido!")
+        return adicionaLembrete(descricao, mes)
+    }
+
+    let tempo = prompt(`hora do lembrete: `)   
+    tempo = tempo.split(':') 
+
+    let ehHoraValida = isNaN(tempo[0]) || tempo[0] < 0 || tempo[0] > 24
+    let ehMinutoValido = (isNaN(tempo[1]) && tempo[1] !== undefined ) || tempo[1] < 0 || tempo[1] > 60
+
+    if(ehHoraValida || ehMinutoValido){
+        alert("Adicione um hora válida!")
+        return adicionaLembrete(descricao, mes, ano)
+    }
+
+    const hora = tempo[0]
+    const minuto = tempo[1] !== undefined ? tempo[1] : '00'
+
+    const novaData = new Date(ano, mes, '', hora, minuto)
     const lembrete = new Lembretes(descricao, novaData)
     lembretes.push(lembrete)
     atualizaLista(dataSistema)
@@ -40,11 +67,18 @@ const atualizaLista = (data) => {
         const descricao = document.createElement('p')
         const hora = document.createElement('p')
         descricao.textContent = lembrete.descricao
-        hora.textContent = lembrete.data.getHours()
+        hora.textContent = `${corrigirHorario(lembrete.data.getHours())}:${corrigirHorario(lembrete.data.getMinutes())}`
         const ul = document.getElementById('ulPai')
         li.append(descricao, hora)
         ul.appendChild(li)
     })
+}
+
+const corrigirHorario = (horario) =>{
+    if(horario < 10){
+        return `0${horario}`
+    }
+    return horario
 }
 
 const mudaMes = (dataParam) => {
