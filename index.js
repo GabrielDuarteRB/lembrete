@@ -22,7 +22,7 @@ const adicionaLembrete = (descricaoRecebida, mesRecebida, anoRecebida) => {
     }
 
     const mes = mesRecebida ? mesRecebida : prompt(`Mês do lembrete: `)
-    if (isNaN(mes) || mes < 0 || mes >= 13) {
+    if (isNaN(mes) || mes <= 0 || mes >= 13) {
         alert("Adicione um mês válido!")
         return adicionaLembrete(descricao)
     }
@@ -71,6 +71,12 @@ const atualizaLista = (data) => {
         li.append(descricao, hora)
         ul.appendChild(li)
     })
+
+    if (filtrado.length === 0) {
+        document.getElementById('vazio').textContent = 'Sem lembretes cadastrados para esta data.'
+    } else {
+        document.getElementById('vazio').textContent = ''
+    }
 }
 
 const corrigirHorario = (horario) => {

@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: Arial;
@@ -10,7 +10,7 @@ ul li {
     list-style: none;
 }
 
-header{
+header {
     display: flex;
     background-color: #212529;
     justify-content: flex-end;
@@ -19,7 +19,7 @@ header{
     width: 100vw;
 }
 
-header > button {
+header>button {
     align-items: center;
     display: flex;
     background-color: transparent;
@@ -31,7 +31,7 @@ header > button {
     padding: 10px 15px;
 }
 
-header > button > span {
+header>button>span {
     font-size: 18px;
 }
 
@@ -41,12 +41,12 @@ main {
     padding-top: 150px;
 }
 
-main > section {
+main>section {
     margin: auto;
     max-width: 900px;
 }
 
-main > section > div { 
+main>section>div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +55,7 @@ main > section > div {
 
 }
 
-main > section > div > button {
+main>section>div>button {
     background-color: #212529;
     border-radius: 5px;
     color: white;
@@ -64,7 +64,7 @@ main > section > div > button {
     width: 60px;
 }
 
-main > section > ul {
+main>section>ul {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +72,7 @@ main > section > ul {
     gap: 10px;
 }
 
-main > section > ul > li {
+main>section>ul>li {
     background-color: white;
     border: 2px solid #212529;
     display: flex;
@@ -81,4 +81,8 @@ main > section > ul > li {
     font-weight: bold;
     padding: 20px;
     width: 100%;
+}
+
+#vazio {
+    text-align: center;
 }
